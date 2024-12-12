@@ -7,22 +7,6 @@ import time
 import re
 import os
 
-log_dir = "/var/log/bs_server"
-log_file_path = '/var/log/bs_server/bs_server.log'
-
-if not os.path.exists(log_dir):
-    os.makedirs(log_dir)
-    
-    
-logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(asctime)s %(levelname)s %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S',
-    handlers=[
-        logging.FileHandler(log_file_path),
-        logging.StreamHandler()
-    ]
-)
 
 def log_info(message):
     logging.info(message)
