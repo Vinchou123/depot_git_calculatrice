@@ -43,9 +43,16 @@ def validate_ip(ip):
 
 def main():
     
+
+    calc_port = os.getenv('CALC_PORT', '13337') 
+
+    try:
+        calc_port = validate_port(calc_port)
+    except argparse.ArgumentTypeError as e:
+        log_warn(f"Erreur de validation du port: {e}")
+        sys.exit(1)
+
     parser = argparse.ArgumentParser()
-    parser.add_argument('-p', '--port', type=validate_port, default=13337,
-                        help='Numéro de port (défaut: 13337).')
     parser.add_argument('-l', '--listen', type=validate_ip,
                         help='Adresse IP sur laquelle écouter.')
 
