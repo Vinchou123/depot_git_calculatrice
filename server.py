@@ -22,14 +22,9 @@ def log_info(message):
     print(f"\033[37m{message}\033[0m")
 
 
-
-
-
 def log_warn(message):
     logging.warning(message)
     print(f"\033[33m{message}\033[0m") 
-
-
 
 
 
