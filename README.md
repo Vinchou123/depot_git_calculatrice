@@ -1,13 +1,13 @@
 # Calculatrice Réseau
 
 ## Description
-Un serveur et un client pour effectuer des calculs arithmétiques à distance.
+Un serveur et un client qui permettent d'effectuer des calculs arithmétiques à distance.
 
 ### Contenu
 - `server.py` : Serveur pour les calculs
 - `client.py` : Client pour interagir avec le serveur
 - `Dockerfile` : Image Docker pour le serveur
-- `docker-compose.yml` : Automatisation du déploiement avec Docker Compose
+- `docker-compose.yml` : Automatisation du déploiement 
 
 ### Commandes
 

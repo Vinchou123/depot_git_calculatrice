@@ -1,19 +1,17 @@
 import socket
 import logging
 
-# Configurer le logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 
 def calculate_expression(expression):
     try:
-        # Évaluer l'expression mathématique
         result = eval(expression)
         return str(result)
     except Exception as e:
         return f"Erreur lors du calcul : {e}"
 
 def main():
-    host = '0.0.0.0'  # Écoute sur toutes les interfaces réseau
+    host = '0.0.0.0' 
     port = 6767
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
@@ -26,7 +24,6 @@ def main():
             with client_socket:
                 logging.info(f"Connexion acceptée de {client_address}")
                 
-                # Envoyer un message de bienvenue au client uniquement une fois au début
                 client_socket.sendall("Bienvenue sur le serveur de calculatrice!".encode('utf-8'))
                 
                 while True:
@@ -37,7 +34,6 @@ def main():
                     expression = data.decode('utf-8').strip()
                     logging.info(f"Reçu : {expression}")
                     
-                    # Calculer l'expression et envoyer la réponse
                     result = calculate_expression(expression)
                     client_socket.sendall(result.encode('utf-8'))
 
