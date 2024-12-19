@@ -3,7 +3,6 @@ import sys
 import re
 import logging
 import os
-import tempfile
 
 log_dir = os.path.join(os.path.expanduser("~"), "temp_logs")
 os.makedirs(log_dir, exist_ok=True)
@@ -20,8 +19,8 @@ def log_error(message):
     print(f"\033[31m{message}\033[0m")
     logging.error(message)
 
-host = '10.2.2.2'
-port = 13337
+host = 'localhost'
+port = 6767
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -30,6 +29,9 @@ try:
     logging.info(f"Connexion réussie à {host} sur le port {port}")
     print(f"Connecté avec succès au serveur {host} sur le port {port}")
     
+    welcome_message = s.recv(1024).decode('utf-8')
+    print(welcome_message)
+
     while True:
         expression = input("Entrez une opération arithmétique : ")
         

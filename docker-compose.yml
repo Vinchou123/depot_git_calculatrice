@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  calculatrice:
+    build: .
+    environment:
+      - CALC_PORT=6767
+    ports:
+      - "6767:6767"
+    volumes:
+      - .:/app
+    container_name: calculatrice-server
